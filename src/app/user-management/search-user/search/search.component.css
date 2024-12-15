@@ -1,0 +1,48 @@
+.layout-options {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.product-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.status-active {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+}
+
+.status-disabled {
+  background-color: #ffcdd2;
+  color: #c62828;
+}
+
+.status-inactive {
+  background-color: #ffecb3;
+  color: #f57c00;
+}
+
+
+.p-card img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.product-badge {
+  font-size: 14px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  color: white;
+}
+
+.status-active {
+  background-color: green;
+}
+
+.status-disabled,
+.status-inactive {
+  background-color: red;
+}

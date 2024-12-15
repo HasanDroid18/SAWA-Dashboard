@@ -1,0 +1,211 @@
+<div class="grid justify-content-center">
+  <p-card
+    class="lg:col-5"
+    header="Create New User"
+    subheader="Please fill in all the details"
+  >
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="field mb-5">
+        <p-floatLabel>
+          <p-dropdown
+            [options]="userTypes"
+            formControlName="userType"
+            id="userType"
+            placeholder="Select User Type"
+            [ngClass]="{
+              'ng-invalid ng-dirty':
+                userForm.get('userType')?.invalid &&
+                userForm.get('userType')?.touched
+            }"
+            [style]="{ width: '100%' }"
+          ></p-dropdown>
+          <label for="userType">User Type</label>
+        </p-floatLabel>
+        <small
+          *ngIf="
+            userForm.get('userType')?.invalid &&
+            (userForm.get('userType')?.dirty ||
+              userForm.get('userType')?.touched)
+          "
+          class="block p-error"
+        >
+        </small>
+      </div>
+
+      <div class="field mb-5">
+        <p-floatLabel>
+          <p-dropdown
+            [options]="userLeadTypes"
+            formControlName="userLeadType"
+            id="userLeadType"
+            placeholder="Select User Lead Type"
+            [ngClass]="{
+              'ng-invalid ng-dirty':
+                userForm.get('userLeadType')?.invalid &&
+                userForm.get('userLeadType')?.touched
+            }"
+            [style]="{ width: '100%' }"
+          ></p-dropdown>
+          <label for="userLeadType">User Lead Type</label>
+        </p-floatLabel>
+        <small
+          *ngIf="
+            userForm.get('userLeadType')?.invalid &&
+            (userForm.get('userLeadType')?.dirty ||
+              userForm.get('userLeadType')?.touched)
+          "
+          class="block p-error"
+        >
+        </small>
+      </div>
+
+      <div class="field mb-5">
+        <p-floatLabel>
+          <input
+            type="text"
+            pInputText
+            formControlName="firstName"
+            id="firstName"
+            placeholder="First Name"
+            [ngClass]="{
+              'ng-invalid ng-dirty':
+                userForm.get('firstName')?.invalid &&
+                userForm.get('firstName')?.touched
+            }"
+            [style]="{ width: '100%' }"
+          />
+          <label for="firstName">First Name</label>
+        </p-floatLabel>
+        <small
+          *ngIf="
+            userForm.get('firstName')?.invalid &&
+            (userForm.get('firstName')?.dirty ||
+              userForm.get('firstName')?.touched)
+          "
+          class="block p-error"
+        >
+          <div *ngIf="userForm.get('firstName')?.errors?.['required']">
+            First Name is required
+          </div>
+        </small>
+      </div>
+
+      <div class="field mb-5">
+        <p-floatLabel>
+          <input
+            type="text"
+            pInputText
+            formControlName="lastName"
+            id="lastName"
+            placeholder="Last Name"
+            [ngClass]="{
+              'ng-invalid ng-dirty':
+                userForm.get('lastName')?.invalid &&
+                userForm.get('lastName')?.touched
+            }"
+            [style]="{ width: '100%' }"
+          />
+          <label for="lastName">Last Name</label>
+        </p-floatLabel>
+        <small
+          *ngIf="
+            userForm.get('lastName')?.invalid &&
+            (userForm.get('lastName')?.dirty ||
+              userForm.get('lastName')?.touched)
+          "
+          class="block p-error"
+        >
+          <div *ngIf="userForm.get('lastName')?.errors?.['required']">
+            Last Name is required
+          </div>
+        </small>
+      </div>
+
+      <div class="field mb-5">
+        <p-floatLabel>
+          <input
+            type="email"
+            pInputText
+            formControlName="email"
+            id="email"
+            placeholder="Email Address"
+            [ngClass]="{
+              'ng-invalid ng-dirty':
+                userForm.get('email')?.invalid && userForm.get('email')?.touched
+            }"
+            [style]="{ width: '100%' }"
+          />
+          <label for="email">Email Address</label>
+        </p-floatLabel>
+        <small
+          *ngIf="
+            userForm.get('email')?.invalid &&
+            (userForm.get('email')?.dirty || userForm.get('email')?.touched)
+          "
+          class="block p-error"
+        >
+          <div *ngIf="userForm.get('email')?.errors?.['required']">
+            Email is required
+          </div>
+          <div *ngIf="userForm.get('email')?.errors?.['email']">
+            Email should be valid
+          </div>
+        </small>
+      </div>
+
+      <div class="field mb-5">
+        <label for="uploadImage">Upload Image:</label>
+        <p-fileUpload mode="basic" id="uploadImage"></p-fileUpload>
+      </div>
+
+      <div class="field mb-5">
+        <label>Password Expiry:</label>
+        <p-slider
+          formControlName="passwordExpiry"
+          [min]="0"
+          [max]="120"
+        ></p-slider>
+        <span>{{ userForm.get("passwordExpiry")?.value }} Days</span>
+      </div>
+
+      <div>
+        <div class="field user-status mb-5 p-d-flex p-jc-between">
+          <label>User Status:</label>
+          <span
+            [ngClass]="{
+              'active-status': userStatus,
+              'inactive-status': !userStatus
+            }"
+            class="p-ml-4"
+          >
+            {{ userStatus ? "Active" : "Inactive" }}
+          </span>
+          <p-inputSwitch
+            formControlName="userStatus"
+            [(ngModel)]="userStatus"
+            (onChange)="onStatusChange()"
+          ></p-inputSwitch>
+        </div>
+      </div>
+
+      <div class="button-group mt-4 p-d-flex p-jc-between">
+        <div class="p-mr-2" style="flex: 1">
+          <p-button
+            type="submit"
+            label="Create New User"
+            class="w-full"
+          ></p-button>
+        </div>
+
+        <div>
+          <p-button
+            type="button"
+            label="Back"
+            (onClick)="onBackClick()"
+            class="p-button-secondary"
+          ></p-button>
+        </div>
+      </div>
+    </form>
+  </p-card>
+</div>

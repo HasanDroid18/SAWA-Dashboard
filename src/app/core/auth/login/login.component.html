@@ -1,0 +1,60 @@
+<div class="limiter">
+  <div class="container-login100">
+    <div class="card-container">
+      <p-card
+        [style]="{ 'font-size': '20px', 'font-family': 'sans-serif' }"
+        header="Login"
+        subheader="Enter your credentials"
+      >
+        <ng-template pTemplate="header">
+          <img
+            alt="Card"
+            [style]="{ width: '320px' }"
+            src="assets/images/integra.png"
+          />
+        </ng-template>
+        <form
+          [formGroup]="loginForm"
+          (ngSubmit)="onLogin()"
+          class="login100-form validate-form"
+        >
+          <div class="wrap-input100 validate-input">
+            <input
+              class="input100"
+              pInputText
+              type="text"
+              name="username"
+              placeholder="Username"
+              formControlName="username"
+            />
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="pi pi-user" aria-hidden="true"></i>
+            </span>
+          </div>
+
+          <div class="wrap-input100 validate-input">
+            <input
+              class="input100"
+              pPassword
+              type="password"
+              name="password"
+              formControlName="password"
+              placeholder="Password"
+            />
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="pi pi-key" aria-hidden="true"></i>
+            </span>
+          </div>
+
+          <div class="container-login100-form-btn">
+            <button pButton type="submit" class="login100-form-btn">
+              <i class="pi pi-sign-in"> LOGIN </i>
+            </button>
+          </div>
+        </form>
+      </p-card>
+    </div>
+  </div>
+</div>

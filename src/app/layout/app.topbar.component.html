@@ -1,0 +1,72 @@
+<div class="layout-topbar" style="display: flex; align-items: center">
+  <a class="layout-topbar-logo" style="display: flex; align-items: center">
+    <img
+      src="assets/images/integra.png"
+      alt="logo"
+      style="width: 80px; height: auto"
+    />
+  </a>
+
+  <button
+    #menubutton
+    class="p-link layout-menu-button layout-topbar-button"
+    (click)="layoutService.onMenuToggle()"
+    style="margin-left: 10px"
+  >
+    <i class="pi pi-bars"></i>
+  </button>
+
+  <button
+    #topbarmenubutton
+    class="p-link layout-topbar-menu-button layout-topbar-button"
+    (click)="layoutService.showProfileSidebar()"
+    style="margin-left: 10px"
+  >
+    <i class="pi pi-ellipsis-v"></i>
+  </button>
+
+  <div
+    #topbarmenu
+    class="layout-topbar-menu"
+    [ngClass]="{
+      'layout-topbar-menu-mobile-active':
+        layoutService.state.profileSidebarVisible
+    }"
+  >
+    <button
+      class="p-link layout-topbar-button"
+      style="margin-left: 10px"
+      [routerLink]="'/notfound'"
+    >
+      <i class="pi pi-calendar"></i>
+      <span>Calendar</span>
+    </button>
+
+    <button
+      class="p-link layout-topbar-button"
+      [routerLink]="'/notfound'"
+      style="margin-left: 10px"
+    >
+      <i class="pi pi-cog"></i>
+      <span>Settings</span>
+    </button>
+    <button
+      class="p-link layout-topbar-button"
+      [routerLink]="'/notfound'"
+      style="margin-left: 10px"
+    >
+      <i class="pi pi-user"></i>
+      <span>Profile</span>
+    </button>
+
+    <button
+      class="p-link layout-topbar-button"
+      (click)="onLogout()"
+      [routerLink]="'/login'"
+      style="margin-left: 10px"
+    >
+      <i class="pi pi-sign-out"></i>
+      <span>Sign Out</span>
+    </button>
+  </div>
+</div>

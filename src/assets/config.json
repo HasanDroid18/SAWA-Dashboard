@@ -1,0 +1,6 @@
+{
+  "auth_url": "http://192.168.55.229:8001/v1/api/auth",
+  "InsuranceCenterUrl": "https://jsonplaceholder.typicode.com/posts",
+  "CallCenterUrl": "https://jsonplaceholder.typicode.com/todos",
+  "DashboardApiUrl": "https://mocki.io/v1/351ca179-a62a-40b8-8c15-7d558588e111"
+}

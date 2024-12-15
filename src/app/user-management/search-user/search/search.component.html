@@ -1,0 +1,86 @@
+<div class="search-container">
+  <div class="card">
+    <div class="layout-options flex flex-wrap align-items-center">
+      <div class="flex align-items-center gap-2">
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input
+            type="text"
+            pInputText
+            placeholder="Search by Name"
+            [(ngModel)]="searchTerm"
+          />
+        </span>
+        <p-dropdown
+          [options]="sortOptions"
+          placeholder="Sort By"
+          (onChange)="onSortChange($event)"
+        ></p-dropdown>
+      </div>
+
+      <div class="flex-grow-1"></div>
+
+      <div>
+        <button
+          pButton
+          icon="pi pi-th-large"
+          (click)="layout = 'grid'"
+          class="p-button-outlined"
+        ></button>
+        <button
+          pButton
+          icon="pi pi-bars"
+          (click)="layout = 'list'"
+          class="p-button-outlined"
+        ></button>
+        <button
+          pButton
+          type="button"
+          (click)="addUser()"
+          label="Add User"
+          icon="pi pi-plus"
+          class="add-user-button mt-2"
+        ></button>
+      </div>
+    </div>
+
+    <div
+      class="user-cards"
+      [ngClass]="{ grid: layout === 'grid', list: layout === 'list' }"
+    >
+      <div class="col-12 md:col-4" *ngFor="let user of filteredUsers()">
+        <div class="card m-3 border-1 surface-border">
+          <div
+            class="flex flex-wrap gap-2 align-items-center justify-content-between mb-2"
+          >
+            <div class="flex align-items-center">
+              <i class="pi pi-user mr-2"></i>
+              <span class="font-semibold">{{ user.role }}</span>
+            </div>
+            <span
+              class="product-badge"
+              [class]="'status-' + user.status.toLowerCase()"
+            >
+              {{ user.status }}
+            </span>
+          </div>
+          <div class="flex flex-column align-items-center text-center mb-3">
+            <img
+              src="assets/images/integra.png"
+              alt="{{ user.name }}"
+              class="w-9 shadow-2 my-3 mx-0"
+            />
+            <div class="text-2xl font-bold">{{ user.name }}</div>
+          </div>
+          <div class="flex align-items-center justify-content-between">
+            <p-button
+              icon="pi pi-user"
+              label="See Profile"
+              class="p-button-sm"
+            ></p-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

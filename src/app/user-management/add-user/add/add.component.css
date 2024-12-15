@@ -1,0 +1,40 @@
+
+
+  .p-field {
+    margin-top: 15px;
+    margin-bottom: 30px;
+  }
+  
+  /* .p-field input,
+  .p-field p-dropdown,
+  .p-field p-fileUpload,
+  .p-field p-slider,
+  .p-field p-inputSwitch {
+    width: 100%;
+  } */
+
+  .user-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .active-status {
+    color: #28a745;
+  }
+  
+  .inactive-status {
+    color: #dc3545;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 0px;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .p-button {
+    width: 100%;
+  }
+  
